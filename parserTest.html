@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+<script> 
+if (text.length > 0){
+	var command_list = ["create new slide", "create new title", "create new text", "insert new image"];
+	var array = text.split(" ");
+	var increate = false; 
+	var k = 0;
+	var data = "";
+	var command = "";
+	var cur_slide = 0; 
+	while(k<array.length){
+		if (increate == false){
+			if (array[k] == "create"){
+				command = array[k] + " " + array[k+1] + " " + array[k+2];
+				k+=3;
+				var index = command_list.indexOf(command);
+				if (index == 0){
+					console.log("create new slide");
+	                cur_slide++; 
+					//CREATE NEW SLIDE
+				}
+				if (index == 1){
+					while (k<array.length && array[k] != "create" && array[k] != "insert"){
+						data += array[k] + " ";
+						k+=1;
+					}
+					console.log("create new title: " + data);
+	                var lol = document.createElement("h1"); 
+	                var t = document.createTextNode(data+"\n"); 
+	                lol.appendChild(t);
+	                
+	                document.getElementsByClassName(""+cur_slide+"asdfasdf")[0].appendChild(lol);
+					//CREATE NEW TITLE
+					data = "";
+				}
+				if (index == 2){
+					while (k<array.length && array[k] != "create" && array[k] != "insert"){
+						data += array[k] + " ";
+						k+=1;
+					}
+					//CREATE NEW TEXT
+					console.log("create new text: " + data);
+	                var lol = document.createElement("h3"); 
+	                var t = document.createTextNode(data+"\n"); 
+	                lol.appendChild(t); 
+	                document.getElementsByClassName(""+cur_slide+"asdfasdf")[0].appendChild(lol);
+					data = "";
+				}
+				if (index == 3){
+					while (k<array.length && array[k] != "create" && array[k] != "insert"){
+						data += array[k] + " ";
+						k+=1;
+					}
+					//INSERT NEW IMAGE
+					console.log("insert new image: " + data);
+					data = "";
+
+				}
+			}
+	        
+	        else k++;
+		}
+	}
+}
+</script>
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script> 
+var x = 0;
+var imageurl = 0;
+$.getJSON("https://www.googleapis.com/customsearch/v1?key=AIzaSyBhDZMuYCN7nz_QduUJFQg9uuDkIW0oCRc&cx=009058670689752953058:jrtz2hvhtpg&q=Google&type=image", function(data){
+    x = data ;
+    for (var k = 0; k<10; k++){
+          imageurl = x["items"][k]["pagemap"]["metatags"][0]["og:image"];
+          if (imageurl != 0){
+            break;
+          }
+    }
+});
+</script>
+</body>
+</html>
